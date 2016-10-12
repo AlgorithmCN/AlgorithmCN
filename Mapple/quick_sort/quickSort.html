@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript">
+    function quickSort(arr) {
+      if (arr.length <= 1) {
+        return arr;
+      }
+
+      var pivoteIndex = Math.floor(arr.length / 2);
+      var pivot = arr.splice(pivoteIndex, 1)[0];
+      var left = [];
+      var right = [];
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] < pivot) {
+          left.push(arr[i]);
+        } else {
+          right.push(arr[i]);
+        }
+      }
+      return quickSort(left).concat([pivot], quickSort(right));
+    }
+
+    function quickSort1(array) {
+      function swap(array, i, k) {
+        var temp = array[i];
+        array[i] = array[k];
+        array[k] = temp;
+      }
+
+      function partition(array, left, right) {
+        var storeIndex = left;
+        var pivot = array[right];
+        for (var i = left; i < right; i++) {
+          if (array[i] < pivot) {
+            swap(array, storeIndex, i);
+            storeIndex++;
+          }
+        }
+        swap(array, right, storeIndex);
+        return storeIndex;
+      }
+
+      function sort(array, left, right) {
+        if (left > right) {
+          return;
+        }
+        var storeIndex = partition(array, left, right);
+        sort(array, left, storeIndex - 1);
+        sort(array, storeIndex + 1, right);
+      }
+
+      sort(array, 0, array.length - 1);
+      return array;
+    }
+  </script>
+</head>
+<body>
+
+</body>
+</html>
