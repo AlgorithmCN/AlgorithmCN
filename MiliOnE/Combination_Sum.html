@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Combination Sum</title>
+</head>
+<body>
+  <script>
+  var c=[2,3,6,7],t=7;
+  //sort the array
+  function quickSort(arr){
+    if（arr.length<1){
+      return arr;
+    }
+      var pivot = arr[0];
+      var left=[],right=[];
+      for(var i= 1;i<arr.lengh;i++){
+        if (arr[i]<=pivot){
+          left.push(arr[i]);
+        }else{
+          right.push(arr[i])
+        }
+    }
+    return quickSort(left).concat([pivot],quickSort(right));
+  }
+  quickSort(c);
+  
